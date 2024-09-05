@@ -8,6 +8,7 @@
 
 .content {
   display: flex;
+  margin-top: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -15,8 +16,26 @@
   position: relative; /* Necessário para posicionar o divisor-galery */
 }
 
-.page #desk {
-  align-self: start;
+.page-novocentro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.page .logos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 80px;
+  padding-top: 20px;
+}
+
+.page .logos img{
+  width: 200px;
+  height: auto;
 }
 
 .backbutton {
@@ -45,6 +64,16 @@
   gap: 40px;
 }
 
+.header .textos ul{
+  margin-left: 40px;
+  /* list-style-type: disc; */
+
+}
+
+.header .textos ul li::marker{
+  content: "=>";
+}
+
 .imagem {
   width: 40%;
   height: auto;
@@ -59,6 +88,7 @@
 .textos {
   width: 100%;
   text-align: left;
+  font-size: 1.1rem;
 }
 
 #horizontal {
@@ -216,21 +246,28 @@ li {
   padding: 0;
 }
 
+.projetosdelei li{
+  font-size: 1.1rem;
+}
+
 .projetosdelei h2 {
   color: #5cb672;
   font-size: 2em;
   font-weight: 300;
 }
 
-.iniciativa ol {
-  list-style: upper-roman;
+.iniciativa ul {
   padding: 0;
   text-align: justify;
 }
 
-.iniciativa ol li {
+.iniciativa ul li {
   margin: 10px 0;
   max-width: 90%;
+}
+
+.iniciativa ul li::marker {
+  content: "=>";
 }
 
 .beneficios-incentivos {
@@ -246,21 +283,24 @@ li {
 
 .beneince {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
 }
 
 .beneince img {
-  width: auto;
-  height: 600px;
+  max-width: 33.3%;
+  height: auto;
 }
 
 .projetosdelei h3 {
   color: #5cb672;
   font-size: 2em;
-  font-weight: 300;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -400,6 +440,7 @@ li {
   width: 100%;
   background-color: #ffffff;
   padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .galeria-mapa {
@@ -424,11 +465,11 @@ li {
 .navegacao-galeria button {
   background: none;
   border: none;
-  cursor: pointer;
 }
 
 .navegacao-galeria button img {
   width: 40px;
+  cursor: pointer;
 }
 
 .title-mapa-atual h1 {
@@ -454,6 +495,7 @@ li {
   width: 100%;
   height: auto;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 
@@ -493,6 +535,77 @@ li {
   color: #bbb;
 }
 
+.categoria-title h5{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.politicas-urbanas{
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+.politicas-urbanas h1{
+  color: #ffffff;
+  background-color: #ff5206;
+  font-size: 1.4em;
+  font-weight: 500;
+  max-width: 1240px;
+  text-align: center;
+  border-radius:20px;
+  padding: 20px;
+}
+
+.politicas{
+  width: 90%;
+  max-width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.politica{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 20%;
+  /* padding: 20px; */
+
+}
+
+.politica h2{
+  color: #ffffff;
+  background-color: #5CB672;
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+  text-align: center;
+
+}
+
+.politica p{
+  color: #000;
+  padding: 20px;
+  border: #FF5206 solid 1px;
+  border-radius: 20px;
+  border-style: dashed ; 
+  text-align: justify;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -653,6 +766,30 @@ li {
   .navegacao-galeria button img {
     width: 30px;
   }
+
+  .politicas-urbanas h1{
+    font-size: 1rem;
+    width: 80%;
+
+  }
+
+  .politicas{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    /* padding: 40px 0; */
+  }
+
+  .politica{
+    width: 90%;
+  }
+
+
+
+
 }
 /* 
 @media (max-width: 480px) {

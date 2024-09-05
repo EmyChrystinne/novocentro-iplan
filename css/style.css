@@ -7,180 +7,299 @@ body {
   padding: 0;
 }
 
-.container {
-  position: relative; /* Torna o contêiner referência para o posicionamento absoluto */
+.top{
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden; /* Garante que nada saia do contêiner */
-}
-
-.left {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#desk {
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px;
-  gap: 40px;
-  height: 10%;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  align-items: flex-start;
-}
-
-#desk img {
-  width: 200px;
-  height: 100%;
-}
-
-.navegacao {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: center;
-  height: 90%;
-}
-
-.navegacao a {
-  text-decoration: none;
-  color: white;
-  font-size: 1.3rem;
-  margin: 10px;
-  text-align: justify;
-}
-
-.navegacao a:hover {
-  font-weight: 500;
-  text-decoration: underline;
-}
-
-.navegacao ul {
-  width: 60%;
-  list-style: none;
-  padding: 0;
-}
-
-.navegacao ul li {
-  padding: 10px;
-}
-
-#interno {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  padding: 20px;
-}
-
-.lista {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  color: white;
-}
-
-.right {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../img/background-img-index.png);
-  background-size: cover; /* Faz com que a imagem de fundo cubra todo o elemento */
-  background-position: center; /* Centraliza a imagem de fundo */
-}
-
-.divisor {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  max-width: 150px; /* Define a largura fixa do divisor */
-  max-height: 150px; /* Define a altura fixa do divisor */
-  /* Ajuste o tamanho conforme necessário */
-}
-
-.divisor img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ajusta a imagem para manter a proporção e se ajustar dentro do divisor */
 }
 
 #mobile {
   display: none;
 }
 
+#desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+}
+
+#desktop a>img {
+  width: 200px;
+  height: auto;
+  max-width: 200px;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 80px;
+  padding-top: 20px;
+}
+
+.logos a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+  flex-wrap: nowrap;
+  align-content: center;
+  position: relative;
+}
+
+.left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  flex-wrap: nowrap;
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.background-img {
+  width: 100%;
+  /* height: 100vh; */
+  object-fit: fill;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  align-items: center;
+  gap: 20px;
+  border-top: #fff 2px solid;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.lista li:hover {
+  text-decoration: underline;
+}
+
+.lista li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
+
+.navegacao {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.participacao-popular {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.participacao-popular h1 {
+  font-size: 1.4em;
+}
+
+.participacao-popular a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 80px;
+  background-color: #fff;
+  color: #203b67;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.line-blue {
+  margin-top: 0.7px;
+  background-color: #203b67;
+  color: white;
+  width: 100%;
+  height: 40px;
+}
+
+.participacao-popular a:hover {
+  background-color: #203b67;
+  color: white;
+}
+
+.participacao-popular a img {
+  width: 50px;
+  height: 50px;
+}
+
+.participacao-popular a:hover img {
+  transition: 0.3s;
+  transform: rotate(360deg);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #203b67;
+  color: white;
+  width: 100%;
+  /* padding: 10px; */
+  gap: 20px;
+}
+
+/* Divisor ajustado para a versão responsiva */
+.divisor {
+  position: absolute; /* Mantém o divisor fixo na tela */
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Garante que o divisor esteja acima de outros elementos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divisor img {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+}
 
 
+/* Responsividade */
+@media (max-width: 1052px) {
+  #mobile {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+ #mobile  a{
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+ }
 
+  #mobile a>img {
+    width: 200px; /* Ajuste o tamanho das imagens SVG para telas menores */
+    height: auto;
+  }
 
-@media screen and (max-width: 768px) {
-  #desk {
+  #desktop {
     display: none;
   }
 
-  #mobile {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    height: 10%;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    align-items: center;
-    background-color: #00ce6c;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .logos img {
-    width: 120px;
-    height: 100%;
-  }
-
   .container {
-    flex-direction: column-reverse;
+    flex-direction: column; /* Altera a direção para coluna */
+    align-items: center; /* Centraliza os itens verticalmente */
+    position: relative;
   }
 
   .left {
     width: 100%;
-    height: 50%;
+    gap: 20px; /* Ajuste o espaço entre os elementos */
+    /* margin-top: 20px; */
   }
 
   .right {
     width: 100%;
-    /* height: 50%; */
+    order: -1; /* Coloca o .right em cima da .left */
   }
 
   .divisor {
-    max-width: 80px;
-    max-height: 80px;
+    display: none;
+  }
+  
+  .background-img {
+    width: 100%; /* Ajusta a largura da imagem */
+    height: 100%; /* Mantém a proporção da imagem */
   }
 
-  .navegacao {
-    height: 100%;
-    padding-bottom: 40px;
+  .top{
+    flex-direction: column;
   }
 
-  .navegacao li a {
-    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+  #mobile a>img {
+    width: 100px; /* Ajuste o tamanho das imagens SVG para telas menores */
+    height: auto;
   }
 
-  .lista {
-    height: 100%;
+  .divisor{
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  #interno {
-    margin-top: 80px;
+  .divisor img {
+    width: 100px; /* Ajuste o tamanho para telas menores */
   }
+
+  .participacao-popular h1 {
+    font-size: 1.2em; /* Ajuste o tamanho da fonte para telas menores */
+  }
+
+  .participacao-popular a {
+    font-size: 1em; /* Ajuste o tamanho da fonte para telas menores */
+    gap: 40px; /* Ajuste o espaçamento entre ícones e texto */
+  }
+
+  .participacao-popular a img {
+    width: 40px; /* Ajuste o tamanho do ícone para telas menores */
+    height: 40px;
+  }
+
+  .participacao-popular a:hover img {
+    transition: none;
+    transform: none;
+  }
+
 }
