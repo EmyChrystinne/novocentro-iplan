@@ -87,18 +87,27 @@ body {
 }
 
 .lista {
+  border-top: #fff 2px solid;
+
   display: flex;
   flex-direction: column;
-  align-self: start;
+  align-self: center;
   align-items: center;
   gap: 20px;
-  border-top: #fff 2px solid;
-  width: 100%;
+  width: 80%;
 }
 
 ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
   list-style-type: none;
   padding: 0;
+  flex-wrap: nowrap;
+  align-content: center;
+
 }
 
 .lista li {
@@ -109,7 +118,9 @@ ul {
   height: 100%;
   padding: 10px;
   border-radius: 5px;
+  text-align: center;
 }
+
 
 .lista li:hover {
   text-decoration: underline;
@@ -136,6 +147,20 @@ ul {
 
 .participacao-popular h1 {
   font-size: 1.4em;
+}
+
+.participacao-popular .sobre{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+  padding-bottom: 40px;
+}
+
+.participacao-popular .sobre p {
+  text-align: justify;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .participacao-popular a {
@@ -205,6 +230,20 @@ ul {
   height: auto; /* Mantém a proporção da imagem */
 }
 
+#entenda{
+  margin-top: 5px;
+  background: none;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  width: auto;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+#entenda:hover{
+  text-decoration: underline;
+}
 
 /* Responsividade */
 @media (max-width: 1052px) {

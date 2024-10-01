@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body {
+    background-color: #ff5206;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#meuFormulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    height: 100vh;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.form-section label {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+    box-shadow: 0 0 5px 0 #203b67;
+    border: 1px solid #203b67;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.form-section button {
+    text-decoration: none;
+    font-size: 1.2em;
+    background-color: #fff;
+    color: #203b67;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-section button:hover {
+    background-color: #203b67;
+    color: white;
+}
+
+#mensagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+    background-color: #203b67;
+    color: white;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #203b67;
+    color: white;
+    width: 100%;
+    gap: 20px;
+}
+
+/* Estilos do Modal */
+.modal {
+    display: none; /* Esconder o modal por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Habilitar rolagem se necessário */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #203b67;
+    width: 80%; /* Largura do modal */
+    max-width: 500px; /* Largura máxima */
+    text-align: center;
+    border-radius: 10px; /* Arredondar cantos do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #203b67; /* Cor ao passar o mouse */
+    text-decoration: none;
+    cursor: pointer;
+}

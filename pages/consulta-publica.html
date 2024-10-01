@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Centro de Maceió</title>
+    <link rel="stylesheet" href="../css/form.css" />
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKIDtUvTnqLhKTyNQjJeSLwI4wNR9GwQc",
+            authDomain: "novocentro-7b1b0.firebaseapp.com",
+            projectId: "novocentro-7b1b0",
+            storageBucket: "novocentro-7b1b0.appspot.com",
+            messagingSenderId: "408239853405",
+            appId: "1:408239853405:web:8a0a42a1b668bf1499e2b4",
+            measurementId: "G-9BEEMLPBQ2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const formSections = document.querySelectorAll('.form-section');
+            let currentSection = 0;
+        
+            function showSection(index) {
+                formSections.forEach((section, i) => {
+                    section.style.display = (i === index) ? 'flex' : 'none';
+                });
+            }
+        
+            function validateSection(index) {
+                const inputs = formSections[index].querySelectorAll('input, textarea, select');
+                let valid = true;
+        
+                inputs.forEach(input => {
+                    if (input.value.trim() === '') {
+                        valid = false;
+                    }
+                });
+        
+                const emailInput = formSections[1].querySelector('input[type="email"]');
+                if (emailInput && emailInput.value.trim() !== '' && !/\S+@\S+\.\S+/.test(emailInput.value)) {
+                    valid = false;
+                }
+        
+                return valid;
+            }
+        
+            showSection(currentSection);
+        
+            document.querySelectorAll('.nextButton').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (validateSection(currentSection)) {
+                        if (currentSection < formSections.length - 1) {
+                            currentSection++;
+                            showSection(currentSection);
+                        }
+                    } else {
+                        alert('Por favor, responda todas as perguntas corretamente antes de continuar.');
+                    }
+                });
+            });
+        
+            document.querySelectorAll('.prevButton').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (currentSection > 0) {
+                        currentSection--;
+                        showSection(currentSection);
+                    }
+                });
+            });
+        
+            document.getElementById('meuFormulario').addEventListener('submit', async function (event) {
+                event.preventDefault();
+        
+                const respostas = {};
+                formSections.forEach((section) => {
+                    const inputs = section.querySelectorAll('input, textarea, select');
+                    inputs.forEach((input) => {
+                        respostas[input.name] = input.value;
+                    });
+                });
+        
+                try {
+                    await addDoc(collection(db, 'respostas-consulta-site'), respostas);
+                    const mensagemDiv = document.getElementById('mensagem');
+                    mensagemDiv.innerText = 'Resposta enviada com sucesso!';
+                    document.getElementById('meuFormulario').reset();
+                    showModal();
+                } catch (error) {
+                    const mensagemDiv = document.getElementById('mensagem');
+                    mensagemDiv.innerText = 'Erro ao enviar resposta: ' + error.message;
+                    mensagemDiv.style.color = 'red';
+                    showModal();
+                }
+            });
+        
+            // Função para mostrar o modal
+            function showModal() {
+                const modal = document.getElementById('mensagemModal');
+                modal.style.display = 'block';
+            }
+        
+            // Fechar o modal quando o usuário clica no botão de fechar
+            document.querySelector('.close-button').addEventListener('click', function() {
+                document.getElementById('mensagemModal').style.display = 'none';
+                location.reload(); // Recarregar a página
+            });
+        
+            // Fechar o modal se o usuário clicar fora do modal
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('mensagemModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    location.reload(); // Recarregar a página
+                }
+            });
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <main class="container">
+        <form id="meuFormulario">
+            <div class="form-section">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <button type="button" class="nextButton">Próximo</button>
+            </div>
+
+            <div class="form-section">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <div class="botoes">
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="button" class="nextButton">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="bairro">Bairro:</label>
+                <select id="bairro" name="bairro" required>
+                    <option value="" disabled selected>Selecione um bairro</option>
+                    <option value="Antares">Antares</option>
+                    <option value="Barro Duro">Barro Duro</option>
+                    <option value="Benedito Bentes">Benedito Bentes</option>
+                    <option value="Bebedouro">Bebedouro</option>
+                    <option value="Bom Parto">Bom Parto</option>
+                    <option value="C. de Bebedouro">C. de Bebedouro</option>
+                    <option value="C. de Jaqueira">C. de Jaqueira</option>
+                    <option value="Centro">Centro</option>
+                    <option value="Clima Bom">Clima Bom</option>
+                    <option value="Cruz das Almas">Cruz das Almas</option>
+                    <option value="Fernão Velho">Fernão Velho</option>
+                    <option value="Feitosa">Feitosa</option>
+                    <option value="Garça Torta">Garça Torta</option>
+                    <option value="Gruta de Lourdes">Gruta de Lourdes</option>
+                    <option value="Ipioca">Ipioca</option>
+                    <option value="Jacarecica">Jacarecica</option>
+                    <option value="Jacintinho">Jacintinho</option>
+                    <option value="Jardim Petrópolis">Jardim Petrópolis</option>
+                    <option value="Jaraguá">Jaraguá</option>
+                    <option value="Jatiúca">Jatiúca</option>
+                    <option value="Levada">Levada</option>
+                    <option value="Mangabeiras">Mangabeiras</option>
+                    <option value="Mutange">Mutange</option>
+                    <option value="P. da Terra">Ponta da Terra</option>
+                    <option value="Pajuçara">Pajuçara</option>
+                    <option value="Petrópolis">Petrópolis</option>
+                    <option value="Pinheiro">Pinheiro</option>
+                    <option value="Pontal da Barra">Pontal da Barra</option>
+                    <option value="Ponta Grossa">Ponta Grossa</option>
+                    <option value="Ponta Verde">Ponta Verde</option>
+                    <option value="Prado">Prado</option>
+                    <option value="Pescaria">Pescaria</option>
+                    <option value="Rio Novo">Rio Novo</option>
+                    <option value="Riacho Doce">Riacho Doce</option>
+                    <option value="Santo Amaro">Santo Amaro</option>
+                    <option value="Santa Lúcia">Santa Lúcia</option>
+                    <option value="Serraria">Serraria</option>
+                    <option value="São Jorge">São Jorge</option>
+                    <option value="Sta. Amélia">Sta. Amélia</option>
+                    <option value="Tabuleiro dos Martins">Tabuleiro dos Martins</option>
+                    <option value="Trapiche da Barra">Trapiche da Barra</option>
+                    <option value="Vergel do Lago">Vergel do Lago</option>
+                </select>
+                <div class="botoes">
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="button" class="nextButton">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="pergunta1">1. O que você mais gosta na sua comunidade?</label>
+                <textarea id="pergunta1" name="pergunta1" rows="4" required></textarea>
+                <div class="botoes">
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="button" class="nextButton">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="pergunta2">2. Quais são os principais desafios que você enfrenta no seu bairro?</label>
+                <textarea id="pergunta2" name="pergunta2" rows="4" required></textarea>
+                <div class="botoes">
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="button" class="nextButton">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="pergunta3">3. Como você avalia a infraestrutura do seu bairro?</label>
+                <textarea id="pergunta3" name="pergunta3" rows="4" required></textarea>
+                <div class="botoes">
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="button" class="nextButton">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="pergunta4">4. O que você gostaria de melhorar na sua comunidade?</label>
+                <textarea id="pergunta4" name="pergunta4" rows="4" required></textarea>
+                <div class="botoes">
+
+                    <button type="button" class="prevButton">Anterior</button>
+                    <button type="submit" class="submit">Enviar</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="mensagemModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="mensagem"></div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 - IPLAN</p>
+    </footer>
+</body>
+</html>

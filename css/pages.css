@@ -186,11 +186,28 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+
 }
 
 .projeto img {
   width: 90%;
   height: auto;
+}
+
+.projeto a{
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #00ce6c;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: -20px;
+}
+
+.projeto a:hover{
+  background-color: #ff5206;
 }
 
 .iniciativas {
@@ -204,9 +221,6 @@
   max-width: 1240px;
 }
 
-.iniciativa:first-child {
-  border-right: #ff5206 solid 1px;
-}
 
 .iniciativa:only-child{
   border: none;
